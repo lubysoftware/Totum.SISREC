@@ -2,8 +2,8 @@
 
 Pré requisitos
 
-- Docker
-- docker-compose
+- [Docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
 
 Dependências
 
