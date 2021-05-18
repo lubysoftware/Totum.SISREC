@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  api:
+    image: totum-api
+    restart: unless-stopped
+    ports:
+      - 3349:3349
+    build:
+      dockerfile: .ci/Dockerfile
+      context: ./Totum.API/
+    command: >
+      bash -c "adonis migration:run
+      && npm start"
+    volumes:
+      - api-uploads:/var/www/api/public
+
+  front:
+    image: totum-front
+    restart: unless-stopped
+    ports:
+      - 80:80
+    build:
+      dockerfile: .ci/Dockerfile
+      context: ./Totum.FRONT/
+
+volumes:
+  api-uploads:
+    driver: local
